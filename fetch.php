@@ -24,7 +24,7 @@ $filtered_rows = $statement->rowCount();
 foreach ($result as $row) {
     $image = '';
     if ($row["image"] != '') {
-        $image = '<img src="upload/' . $row["image"] . '" class="img-thumbnail" width="50" height="35" />';
+        $image = '<img src="../upload/' . $row["image"] . '" class="img-thumbnail" width="50" height="35" />';
     } else {
         $image = '';
     }

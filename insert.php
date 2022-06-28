@@ -1,5 +1,5 @@
 <?php
-include('../db.php');
+include('Database/db.php');
 include('function.php');
 if (isset($_POST["operation"])) {
     if ($_POST["operation"] == "Add") {
@@ -9,7 +9,7 @@ if (isset($_POST["operation"])) {
         }
         $statement = $conn->prepare("
    INSERT INTO users (fname, lname, image, email, contact, dob, hobby, gender, address) 
-   VALUES (:fname, :lname, :image, :email, :contact, :dob, :hobby, :gender, :address)
+   VALUES ('$fname', '$lname', '$image', '$email', '$contact', '$dob', '$hobby', '$gender', '$address')
   ");
         $result = $statement->execute(
             array(
@@ -37,8 +37,8 @@ if (isset($_POST["operation"])) {
         }
         $statement = $conn->prepare(
             "UPDATE users 
-   SET fname = :fname, lname = :lname, email = :email, contact = :contact, dob = :dob, hobby = :hobby, gender = :gender, address = :address, image = :image  
-   WHERE id = :id
+   SET fname = '$fname', lname = '$lname', email = '$email', contact = '$contact', dob = '$dob', hobby = '$hobby', gender = '$gender', address = '$address', image = '$image'  
+   WHERE id = '$id'
    "
         );
         $result = $statement->execute(
