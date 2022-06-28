@@ -1,11 +1,11 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = " ";
+$password = "";
+$db = "crud_all_fields";
+$conn = new mysqli($servername, $username, $password, $db);
 
-$conn = new mysqli($servername, $username, $password);
-
-if($conn->connect_error){
-    die("Connection Failed: " .$conn->connect_error);
+if ($conn->connect_error) {
+    die("Connection Failed: " . $conn->connect_error);
 }
-echo"Connected Sucessfully";
+echo "Connected Sucessfully";

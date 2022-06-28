@@ -26,8 +26,14 @@ $(document).ready(function(){
 
  $(document).on('submit', '#user_form', function(event){
   event.preventDefault();
-  var firstName = $('#first_name').val();
-  var lastName = $('#last_name').val();
+  var fname = $('#fname').val();
+  var lname = $('#lname').val();
+  var email = $('#email').val();
+  var contact = $('#contact').val();
+  var dob = $('#dob').val();
+  var hobby = $('#hobby').val();
+  var gender = $('#gender').val();
+  var address = $('#address').val();
   var extension = $('#user_image').val().split('.').pop().toLowerCase();
   if(extension != '')
   {
@@ -38,7 +44,7 @@ $(document).ready(function(){
     return false;
    }
   } 
-  if(firstName != '' && lastName != '')
+  if(fname != '' && lname != '' && email != '' && contact != '' && dob != '' && hobby != '' && gender != '' && address != '')
   {
    $.ajax({
     url:"insert.php",
@@ -57,7 +63,7 @@ $(document).ready(function(){
   }
   else
   {
-   alert("Both Fields are Required");
+   alert("ALL Fields are Required");
   }
  });
  
@@ -71,8 +77,14 @@ $(document).ready(function(){
    success:function(data)
    {
     $('#userModal').modal('show');
-    $('#first_name').val(data.first_name);
-    $('#last_name').val(data.last_name);
+    $('#fname').val(data.fname);
+    $('#lname').val(data.lname);
+    $('#email').val(data.email);
+    $('#contact').val(data.contact);
+    $('#dob').val(data.dob);
+    $('#hobby').val(data.hobby);
+    $('#gender').val(data.gender);
+    $('#address').val(data.address);
     $('.modal-title').text("Edit User");
     $('#user_id').val(user_id);
     $('#user_uploaded_image').html(data.user_image);
