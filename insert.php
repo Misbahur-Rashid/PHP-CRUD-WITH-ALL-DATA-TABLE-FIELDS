@@ -23,6 +23,19 @@ if (isset($_POST["operation"])) {
         );
         if (!empty($result)) {
             echo 'Data Inserted';
+            // echo '
+            // <script>
+            // swal({
+            //     title: "Sucess!",
+            //     text: "Data Inserted",
+            //     type: "sucess",
+            //     confirmButtonText: "Done"
+            //     },
+            //     function(){
+            //         window.location=\'insert.php\'
+            //         });
+            //     </script>
+            // ';
         }
     }
     if ($_POST["operation"] == "Edit") {

@@ -8,6 +8,10 @@
        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+       <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" id="theme-styles">
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
        <style>
            body {
                margin: 0;
@@ -39,13 +43,16 @@
                    <thead>
                        <tr>
                            <th style="text-align: center" width="10%">Image</th>
-                           <th style="text-align: center" width="10%">First Name</th>
-                           <th style="text-align: center" width="10%">Last Name</th>
-                           <th style="text-align: center" width="10%">Email</th>
-                           <th style="text-align: center" width="10%">Phone</th>
-                           <th style="text-align: center" width="10%">Address</th>
-                           <th style="text-align: center" width="10%">Edit</th>
-                           <th style="text-align: center" width="10%">Delete</th>
+                           <th style="text-align: center" width="9%">First Name</th>
+                           <th style="text-align: center" width="9%">Last Name</th>
+                           <th style="text-align: center" width="9%">Email</th>
+                           <th style="text-align: center" width="9%">Phone</th>
+                           <th style="text-align: center" width="9%">Address</th>
+                           <!-- <th style="text-align: center" width="9%">DOB</th> -->
+                           <!-- <th style="text-align: center" width="9%">Hobby</th>
+                           <th style="text-align: center" width="9%">Gender</th> -->
+                           <th style="text-align: center" width="9%">Edit</th>
+                           <th style="text-align: center" width="9%">Delete</th>
                        </tr>
                    </thead>
                </table>
@@ -130,6 +137,8 @@
                var extension = $('#user_image').val().split('.').pop().toLowerCase();
                if (extension != '') {
                    if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+
+
                        alert("Invalid Image File");
                        $('#user_image').val('');
                        return false;
