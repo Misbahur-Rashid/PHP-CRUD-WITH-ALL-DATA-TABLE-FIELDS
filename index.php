@@ -43,6 +43,7 @@
                            <th style="text-align: center" width="10%">Last Name</th>
                            <th style="text-align: center" width="10%">Email</th>
                            <th style="text-align: center" width="10%">Phone</th>
+                           <th style="text-align: center" width="10%">Address</th>
                            <th style="text-align: center" width="10%">Edit</th>
                            <th style="text-align: center" width="10%">Delete</th>
                        </tr>
@@ -70,12 +71,14 @@
                        <label>Enter Last Name</label>
                        <input type="text" name="lname" id="lname" class="form-control" />
                        <br />
-                       <br />
                        <label>Enter Your Email</label>
                        <input type="email" name="email" id="email" class="form-control" />
                        <br />
                        <label>Enter Your Phone Number</label>
                        <input type="tel" name="phone" id="phone" class="form-control" />
+                       <br />
+                       <label>Enter Your Address</label>
+                       <input type="text" name="address" id="address" class="form-control" />
                        <br />
                        <label>Select User Image</label>
                        <input type="file" name="user_image" id="user_image" />
@@ -123,6 +126,7 @@
                var lastName = $('#lname').val();
                var email = $('#email').val();
                var phone = $('#phone').val();
+               var address = $('#address').val();
                var extension = $('#user_image').val().split('.').pop().toLowerCase();
                if (extension != '') {
                    if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
@@ -165,6 +169,7 @@
                        $('#lname').val(data.lname);
                        $('#email').val(data.email);
                        $('#phone').val(data.phone);
+                       $('#address').val(data.address);
                        $('.modal-title').text("Edit User");
                        $('#user_id').val(user_id);
                        $('#user_uploaded_image').html(data.user_image);

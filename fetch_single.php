@@ -14,6 +14,7 @@ if(isset($_POST["user_id"]))
  $result = $statement->fetchAll();
  foreach($result as $row)
  {
+  $output["address"] = $row["address"];
   $output["phone"] = $row["phone"];
   $output["email"] = $row["email"];
   $output["fname"] = $row["fname"];
