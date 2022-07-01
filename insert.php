@@ -1,5 +1,5 @@
 <?php
-include('Database/db.php');
+include('db.php');
 include('function.php');
 if (isset($_POST["operation"])) {
     if ($_POST["operation"] == "Add") {
@@ -7,20 +7,15 @@ if (isset($_POST["operation"])) {
         if ($_FILES["user_image"]["name"] != '') {
             $image = upload_image();
         }
-        $statement = $conn->prepare("
-   INSERT INTO users (fname, lname, image, email, contact, dob, hobby, gender, address) 
-   VALUES ('$fname', '$lname', '$image', '$email', '$contact', '$dob', '$hobby', '$gender', '$address')
+        $statement = $connection->prepare("
+   INSERT INTO users (email, fname, lname, image) 
+   VALUES (:email, :fname, :lname, :image)
   ");
         $result = $statement->execute(
             array(
+                ':email' => $_POST["email"],
                 ':fname' => $_POST["fname"],
                 ':lname' => $_POST["lname"],
-                ':email' => $_POST["email"],
-                ':contact' => $_POST["contact"],
-                ':dob' => $_POST["dob"],
-                ':hobby' => $_POST["hobby"],
-                ':gender' => $_POST["gender"],
-                ':address' => $_POST["address"],
                 ':image'  => $image
             )
         );
@@ -35,22 +30,17 @@ if (isset($_POST["operation"])) {
         } else {
             $image = $_POST["hidden_user_image"];
         }
-        $statement = $conn->prepare(
+        $statement = $connection->prepare(
             "UPDATE users 
-   SET fname = '$fname', lname = '$lname', email = '$email', contact = '$contact', dob = '$dob', hobby = '$hobby', gender = '$gender', address = '$address', image = '$image'  
-   WHERE id = '$id'
+   SET email = :email, fname = :fname, lname = :lname, image = :image  
+   WHERE id = :id
    "
         );
         $result = $statement->execute(
             array(
+                ':email' => $_POST["email"],
                 ':fname' => $_POST["fname"],
                 ':lname' => $_POST["lname"],
-                ':email' => $_POST["email"],
-                ':contact' => $_POST["contact"],
-                ':dob' => $_POST["dob"],
-                ':hobby' => $_POST["hobby"],
-                ':gender' => $_POST["gender"],
-                ':address' => $_POST["address"],
                 ':image'  => $image,
                 ':id'   => $_POST["user_id"]
             )
