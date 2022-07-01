@@ -28,23 +28,23 @@
 
    <body>
        <div class="container box">
-           <h1 align="center">PHP Ajax CRUD with Data Tables Modals</h1>
-           <br />
+           <h1 align="center">PHP Ajax CRUD with Data Tables & Modals</h1>
+
            <div class="table-responsive">
-               <br />
+
                <div align="right">
                    <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add Data</button>
-               </div>
-               <br /><br />
-               <table id="user_data" class="table table-bordered table-striped">
+               </div><br>
+               <table style="text-align: center" id="user_data" class="table table-bordered table-striped">
                    <thead>
                        <tr>
-                           <th width="10%">Image</th>
-                           <th width="10%">FName</th>
-                           <th width="10%">LName</th>
-                           <th width="10%">Email</th>
-                           <th width="10%">Edit</th>
-                           <th width="10%">Delete</th>
+                           <th style="text-align: center" width="10%">Image</th>
+                           <th style="text-align: center" width="10%">First Name</th>
+                           <th style="text-align: center" width="10%">Last Name</th>
+                           <th style="text-align: center" width="10%">Email</th>
+                           <th style="text-align: center" width="10%">Phone</th>
+                           <th style="text-align: center" width="10%">Edit</th>
+                           <th style="text-align: center" width="10%">Delete</th>
                        </tr>
                    </thead>
                </table>
@@ -73,6 +73,9 @@
                        <br />
                        <label>Enter Your Email</label>
                        <input type="email" name="email" id="email" class="form-control" />
+                       <br />
+                       <label>Enter Your Phone Number</label>
+                       <input type="tel" name="phone" id="phone" class="form-control" />
                        <br />
                        <label>Select User Image</label>
                        <input type="file" name="user_image" id="user_image" />
@@ -119,6 +122,7 @@
                var firstName = $('#fname').val();
                var lastName = $('#lname').val();
                var email = $('#email').val();
+               var phone = $('#phone').val();
                var extension = $('#user_image').val().split('.').pop().toLowerCase();
                if (extension != '') {
                    if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
@@ -160,6 +164,7 @@
                        $('#fname').val(data.fname);
                        $('#lname').val(data.lname);
                        $('#email').val(data.email);
+                       $('#phone').val(data.phone);
                        $('.modal-title').text("Edit User");
                        $('#user_id').val(user_id);
                        $('#user_uploaded_image').html(data.user_image);

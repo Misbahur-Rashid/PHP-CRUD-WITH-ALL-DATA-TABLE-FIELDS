@@ -43,6 +43,7 @@ foreach($result as $row)
  $sub_array[] = $row["fname"];
  $sub_array[] = $row["lname"];
  $sub_array[] = $row["email"];
+ $sub_array[] = $row["phone"];
  $sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="btn btn-warning btn-xs update">Update</button>';
  $sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-xs delete">Delete</button>';
  $data[] = $sub_array;

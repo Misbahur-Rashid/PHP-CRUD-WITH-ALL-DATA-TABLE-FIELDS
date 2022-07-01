@@ -8,11 +8,12 @@ if (isset($_POST["operation"])) {
             $image = upload_image();
         }
         $statement = $connection->prepare("
-   INSERT INTO users (email, fname, lname, image) 
-   VALUES (:email, :fname, :lname, :image)
+   INSERT INTO users (phone, email, fname, lname, image) 
+   VALUES (:phone, :email, :fname, :lname, :image)
   ");
         $result = $statement->execute(
             array(
+                ':phone' => $_POST["phone"],
                 ':email' => $_POST["email"],
                 ':fname' => $_POST["fname"],
                 ':lname' => $_POST["lname"],
@@ -32,12 +33,13 @@ if (isset($_POST["operation"])) {
         }
         $statement = $connection->prepare(
             "UPDATE users 
-   SET email = :email, fname = :fname, lname = :lname, image = :image  
+   SET phone = :phone, email = :email, fname = :fname, lname = :lname, image = :image  
    WHERE id = :id
    "
         );
         $result = $statement->execute(
             array(
+                ':phone' => $_POST["phone"],
                 ':email' => $_POST["email"],
                 ':fname' => $_POST["fname"],
                 ':lname' => $_POST["lname"],
